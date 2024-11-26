@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en Raya | Juego Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>✨ Tres en Raya ✨</h1>
+        </header>
+        
+        <section class="config-panel" aria-label="Configuración del juego">
+            <form class="player-config">
+                <fieldset class="player" id="player1-controls">
+                    <legend>👤 Jugador 1</legend>
+                    <label for="player1">Nombre:</label>
+                    <input type="text" id="player1" value="Jugador 1" placeholder="Nombre jugador 1">
+                    <label for="color1">Color:</label>
+                    <input type="color" id="color1" value="#ff4444">
+                </fieldset>
+                <fieldset class="player" id="player2-controls">
+                    <legend>👤 Jugador 2</legend>
+                    <label for="player2">Nombre:</label>
+                    <input type="text" id="player2" value="Jugador 2" placeholder="Nombre jugador 2">
+                    <label for="color2">Color:</label>
+                    <input type="color" id="color2" value="#4444ff">
+                </fieldset>
+            </form>
+            <div id="ai-message" style="display: none; color: #ff0000; margin: 1rem 0;">
+                Jugando contra la IA (Dificultad: Imposible)
+            </div>
+            <nav class="game-controls">
+                <button id="toggle-ai" class="mode-button">
+                    👥 Modo actual: Jugador vs Jugador <small>(Click para cambiar)</small>
+                </button>
+                <div id="ai-message" class="ai-info" style="display: none;">
+                    <p>🤖 Estás jugando contra una IA imbatible</p>
+                    <small>La IA usará el símbolo "O" en color rojo</small>
+                </div>
+                <div class="main-controls">
+                    <button id="start-game" class="primary-button">🎮 Comenzar Juego</button>
+                    <button id="reset-game" class="secondary-button">🔄 Reiniciar Todo</button>
+                </div>
+            </nav>
+        </section>
+
+        <section class="game-info" aria-label="Información del juego">
+            <div class="game-status" role="status">
+                <p id="current-player"></p>
+                <p id="score">
+                    <span id="score1">0</span> • <span id="score2">0</span>
+                </p>
+            </div>
+
+            <div class="current-turn" id="current-turn" role="status" aria-live="polite">
+                🎮 Turno de: <span id="current-player-name"></span>
+            </div>
+        </section>
+
+        <section class="game-board" aria-label="Tablero de juego">
+            <div class="board" role="grid">
+                <div class="cell" data-index="0" role="gridcell" tabindex="0" aria-label="Casilla 1"></div>
+                <div class="cell" data-index="1" role="gridcell" tabindex="0" aria-label="Casilla 2"></div>
+                <div class="cell" data-index="2" role="gridcell" tabindex="0" aria-label="Casilla 3"></div>
+                <div class="cell" data-index="3" role="gridcell" tabindex="0" aria-label="Casilla 4"></div>
+                <div class="cell" data-index="4" role="gridcell" tabindex="0" aria-label="Casilla 5"></div>
+                <div class="cell" data-index="5" role="gridcell" tabindex="0" aria-label="Casilla 6"></div>
+                <div class="cell" data-index="6" role="gridcell" tabindex="0" aria-label="Casilla 7"></div>
+                <div class="cell" data-index="7" role="gridcell" tabindex="0" aria-label="Casilla 8"></div>
+                <div class="cell" data-index="8" role="gridcell" tabindex="0" aria-label="Casilla 9"></div>
+            </div>
+        </section>
+
+        <section class="time-travel" aria-label="Viajes en el tiempo">
+            <h2 class="time-travel-title">⏰ Viajes en el Tiempo</h2>
+            <nav class="moves-list" id="moves-list">
+                <button class="move-button" data-move="start" type="button">
+                    Ir al inicio del juego
+                </button>
+            </nav>
+        </section>
+
+        <section class="game-history" aria-label="Historial de partidas">
+            <h2 class="history-title">🏆 Historial de Partidas</h2>
+            <article class="history-list" id="history-list">
+                <!-- El historial se llenará dinámicamente con JavaScript -->
+            </article>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html> 
